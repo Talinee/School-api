@@ -14,7 +14,7 @@ class CreateTeacherSchema extends Schema {
       table.timestamps('timestamps')
 
       table
-      .onUpdate('CASCADE')
+    .onUpdate('CASCADE')
      .onDelete('CASCADE')
     })
   }

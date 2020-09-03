@@ -15,10 +15,10 @@ class CreateStudentSchema extends Schema {
       table.timestamp('timestamps')// auto 2 column -> created_at , update_at
 
       table
-      .foreign('group_id')
-      .references('groups.group_id')
-      .onUpdate('CASCADE')
-      .onDelete('CASCADE')
+     .foreign('group_id')
+    .references('groups.group_id')
+    .onUpdate('CASCADE')
+    .onDelete('CASCADE')
 
     })
   }

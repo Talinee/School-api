@@ -1,6 +1,4 @@
-'use strict'
-
-const { route } = require('@adonisjs/framework/src/Route/Manager')
+"use strict";
 
 /*
 |--------------------------------------------------------------------------
@@ -16,34 +14,17 @@ const { route } = require('@adonisjs/framework/src/Route/Manager')
 */
 
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
-const Route = use('Route')
+const Route = use("Route");
 
-Route.get('/', () => {
-  return { greeting: 'Hello world in JSON' }
-})
+Route.get("/", () => {
+  return { greeting: "Yes" };
+});
 
 Route.group(() => {
-Route.get('/teachers','TeacherController.index')
-Route.get('/teachers/:id','TeacherController.show')
-Route.post('/teachers','TeacherController.store')
-}).prefix('api/v1')
-Route.group(() => {
-  Route.get('/subjects','SubjectController.index')
-  Route.get('/subjects/:id','SubjectController.show')
-  Route.post('/subjects','SubjectController.store')
-  }).prefix('api/v2')
-  Route.group(() => {
-    Route.get('/students','StudentsController.index')
-    Route.get('/students/:id','StudentController.show')
-    Route.post('/students','StudentController.store')
-    }).prefix('api/v3')
-    Route.group(() => {
-      Route.get('/enrollments','EnrollmentController.index')
-      Route.get('/enrollments/:id','EnrollmentController.show')
-      Route.post('/enrollments','EnrollmentController.store')
-      }).prefix('api/v4')
-      Route.group(() => {
-        Route.get('/groups','GroupController.index')
-        Route.get('/groups/:id','GroupController.show')
-        Route.post('/groups','GroupController.store')
-        }).prefix('api/v5')
+  Route.resource("/teachers", "TeacherController");
+  Route.resource("/students", "StudentController");
+  Route.resource("/subjects", "SubjectController");
+  Route.get("/subjects/:id/teacher", "SubjectController.showTeacher");
+  Route.resource("/groups", "GroupController");
+  Route.resource("/enrollments", "EnrollmentController");
+}).prefix("api/v1");
